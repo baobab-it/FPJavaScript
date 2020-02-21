@@ -1,18 +1,18 @@
 const person = {
-    name: 'Jimmy Smith',
+    name: "Jimmy Smith",
     age: 40,
-    hairColor: 'brown',
-    eyeColor: 'blue',
+    hairColor: "brown",
+    eyeColor: "blue",
 };
 
 const careerData = {
-    name: 'Bob Smith',
-    title: 'developer',
-    company: 'ABC Software',
+    name: "Bob Smith",
+    title: "developer",
+    company: "ABC Software",
 };
 
 const updates = {
-    name: 'James Smith',
+    name: "James Smith",
 };
 
 const updatedPerson = {

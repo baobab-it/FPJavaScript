@@ -126,13 +126,13 @@ describe("Частина 1", () => {
         // функції, які використовуються:                                             //
         // https://github.com/lodash/lodash/issues/3298#issuecomment-341685354        //
         ////////////////////////////////////////////////////////////////////////////////
-        // import map from 'lodash-es/map';
-        // import filter from 'lodash-es/filter';
-        // import mapValues from 'lodash-es/mapValues';
-        // import toPairs from 'lodash-es/toPairs';
-        // import orderBy from 'lodash-es/orderBy';
-        // import groupBy from 'lodash-es/groupBy';
-        // import sortBy from 'lodash-es/sortBy';
+        // import map from "lodash-es/map";
+        // import filter from "lodash-es/filter";
+        // import mapValues from "lodash-es/mapValues";
+        // import toPairs from "lodash-es/toPairs";
+        // import orderBy from "lodash-es/orderBy";
+        // import groupBy from "lodash-es/groupBy";
+        // import sortBy from "lodash-es/sortBy";
 
         // // прото додаємо функції lodash, які ви хочете підтримувати
         // const chainableFunctions = {

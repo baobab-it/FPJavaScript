@@ -35,11 +35,11 @@ describe("Частина 2", () => {
         let frozenStudent: Student = deepFreeze(student);
 
         expect(() => {
-            frozenStudent.setFirstName("Emmet"); // Виняток: Не призначається тільки для читання тільки властивості 'firstname' об'єкту '#<Student>'
+            frozenStudent.setFirstName("Emmet"); // Виняток: Не призначається тільки для читання тільки властивості "firstname" об'єкту "#<Student>"
         }).toThrowError(TypeError);
 
         expect(() => {
-            frozenStudent.getAddress().setCountry("Canada"); // Виняток: Не призначається тільки  для читання  тільки властивості 'country' об'єкту '#<Address>'
+            frozenStudent.getAddress().setCountry("Canada"); // Виняток: Не призначається тільки  для читання  тільки властивості "country" об'єкту "#<Address>"
         }).toThrowError(TypeError);
     });
 
