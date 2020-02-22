@@ -1,4 +1,4 @@
-import words from "an-array-of-english-words";
+// import words from "an-array-of-english-words";
 
 const countOccurrences = (arr: string[]) =>
     arr.reduce((acc, str) => ({
@@ -20,7 +20,7 @@ const findAnagrams = (word: string, allWords: string[]) => {
         .filter(anagram => anagram !== word);
 }
 
-console.log(findAnagrams("cinema", words));
+// console.log(findAnagrams("cinema", words));
 
 /*
     Expected output: ["iceman", "anemic"]
