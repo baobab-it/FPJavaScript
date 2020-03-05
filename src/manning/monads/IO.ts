@@ -2,7 +2,9 @@
  * IO Monad class
  * Author: Luis Atencio
  */
-import isFunction from "lodash-es/isFunction";
+
+const isFunction = (obj: any) =>
+    !!(obj && obj.constructor && obj.call && obj.apply);
 
 export default class IO<T> {
     private effect: () => T;
@@ -22,11 +24,11 @@ export default class IO<T> {
         return new IO<T>(fn);
     }
 
-    map(fn: (arg: any) => any) {
+    map<U>(fn: (arg: T) => U) {
         return new IO(() => fn(this.effect()));
     }
 
-    chain(fn: (arg: T) => any) {
+    chain<U>(fn: (arg: T) => U) {
         return fn(this.effect());
     }
 

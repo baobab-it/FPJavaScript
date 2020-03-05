@@ -3,17 +3,17 @@
  * Author: Luis Atencio
  */
 
-export class Maybe {
-    static just(a) {
-        return new Just(a);
+export class Maybe<T> {
+    static just<T>(a: T) {
+        return new Just<T>(a);
     }
-    static nothing() {
+    static nothing<T>(): Nothing<T> {
         return new Nothing();
     }
-    static fromNullable(a) {
+    static fromNullable<T>(a: T): Just<T> | Nothing<T> {
         return a !== null ? Maybe.just(a) : Maybe.nothing();
     }
-    static of(a) {
+    static of<T>(a: T) {
         return Maybe.just(a);
     }
     get isNothing() {
@@ -25,21 +25,23 @@ export class Maybe {
 }
 
 // Derived class Just -> Presence of a value
-export class Just extends Maybe {
-    constructor(value) {
+export class Just<T> extends Maybe<T> {
+    protected _value: T;
+
+    constructor(value: T) {
         super();
         this._value = value;
     }
 
-    get value() {
+    get value(): T {
         return this._value;
     }
 
-    map(f) {
+    map(f: (arg: T) => any) {
         return Maybe.fromNullable(f(this._value));
     }
 
-    chain(f) {
+    chain(f: (arg: T) => any) {
         return f(this._value);
     }
 
@@ -47,8 +49,8 @@ export class Just extends Maybe {
         return this._value;
     }
 
-    filter(f) {
-        Maybe.fromNullable(f(this._value) ? this._value : null);
+    filter(f: (arg: T) => any) {
+        return Maybe.fromNullable(f(this._value) ? this._value : null);
     }
 
     get isJust() {
@@ -61,12 +63,12 @@ export class Just extends Maybe {
 }
 
 // Derived class Empty -> Abscense of a value
-export class Nothing extends Maybe {
-    map(f) {
+export class Nothing<T> extends Maybe<T> {
+    map(f: (arg: T) => any) {
         return this;
     }
 
-    chain(f) {
+    chain(f: (arg: T) => any) {
         return this;
     }
 
@@ -79,7 +81,7 @@ export class Nothing extends Maybe {
     }
 
     filter() {
-        return this._value;
+        return this.value;
     }
 
     get isNothing() {

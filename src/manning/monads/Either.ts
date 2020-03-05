@@ -4,7 +4,9 @@
  */
 
 export default class Either {
-    constructor(value) {
+    protected _value: any;
+
+    constructor(value: any) {
         this._value = value;
     }
 
@@ -12,21 +14,21 @@ export default class Either {
         return this._value;
     }
 
-    static left(a) {
-        return new exports.Left(a);
+    static left(a: any) {
+        return new Left(a);
     }
 
-    static right(a) {
-        return new exports.Right(a);
+    static right(a: any) {
+        return new Right(a);
     }
 
-    static fromNullable(val) {
+    static fromNullable(val: any) {
         return val !== null && val !== undefined
             ? Either.right(val)
             : Either.left(val);
     }
 
-    static of(a) {
+    static of(a: any) {
         return Either.right(a);
     }
 }
@@ -40,23 +42,23 @@ export class Left extends Either {
         throw new TypeError("Can't extract the value of a Left(a).");
     }
 
-    getOrElse(other) {
+    getOrElse(other: any) {
         return other;
     }
 
-    orElse(f) {
+    orElse(f: (arg: any) => any) {
         return f(this._value);
     }
 
-    chain(f) {
+    chain(f: any) {
         return this;
     }
 
-    getOrElseThrow(a) {
+    getOrElseThrow(a: string) {
         throw new Error(a);
     }
 
-    filter(f) {
+    filter(f: any) {
         return this;
     }
 
@@ -74,11 +76,11 @@ export class Left extends Either {
 }
 
 export class Right extends Either {
-    map(f) {
-        return exports.Either.of(f(this._value));
+    map(f: (arg: any) => any) {
+        return Either.of(f(this._value));
     }
 
-    getOrElse(other) {
+    getOrElse(other: any) {
         return this._value;
     }
 
@@ -86,16 +88,16 @@ export class Right extends Either {
         return this;
     }
 
-    chain(f) {
+    chain(f: (arg: any) => any) {
         return f(this._value);
     }
 
-    getOrElseThrow(_) {
+    getOrElseThrow(_: any) {
         return this._value;
     }
 
-    filter(f) {
-        return exports.Either.fromNullable(f(this._value) ? this._value : null);
+    filter(f: (arg: any) => any) {
+        return Either.fromNullable(f(this._value) ? this._value : null);
     }
 
     get isRight() {

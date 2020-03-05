@@ -4,6 +4,9 @@
         "sourceMap": true,
         "baseUrl": "./",
         "paths": {
+            "fp-ts/*": ["./node_modules/fp-ts/*"],
+            "fp-ts-contrib/*": ["./node_modules/fp-ts-contrib/*"],
+            "monocle-ts/*": ["./node_modules/monocle-ts/*"],
             "lodash-es/*": ["./node_modules/lodash-es/*"],
             "@app/*": ["src/*"]
             // "@App/(.*)": "<rootDir>/src/$1"
